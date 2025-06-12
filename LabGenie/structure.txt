@@ -1,0 +1,16 @@
+LabRecordGenerator/
+├── app.py                  # Flask application
+├── database.py             # SQLite database operations
+├── gemini_api.py           # Gemini API integration
+├── export_utils.py         # .docx and .pdf export functions
+├── static/
+│   ├── css/
+│   │   └── styles.css     # Tailwind CSS or custom styles
+│   └── js/
+│       └── script.js      # Client-side JavaScript
+├── templates/
+│   ├── index.html         # Home page with input form
+│   ├── dashboard.html     # Dashboard for viewing records
+│   └── record.html        # View individual record
+├── requirements.txt        # Dependencies
+└── records/               # Folder for exported .docx and .pdf files

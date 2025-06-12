@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Record Generator AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">Lab Record Generator AI</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="bg-{{ 'red-100 text-red-700' if category == 'error' else 'green-100 text-green-700' }} p-4 mb-4 rounded">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <form action="{{ url_for('submit') }}" method="POST" class="space-y-4">
+            <div>
+                <label for="experiment_description" class="block text-sm font-medium text-gray-700">Experiment Description</label>
+                <input type="text" name="experiment_description" id="experiment_description" class="mt-1 p-2 w-full border rounded-md" required>
+            </div>
+            
+            <div>
+                <label for="readings" class="block text-sm font-medium text-gray-700">Readings (format: x1,y1;x2,y2;...)</label>
+                <input type="text" name="readings" id="readings" class="mt-1 p-2 w-full border rounded-md" required>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700">Generate Record</button>
+        </form>
+
+        <div class="mt-4 text-center">
+            <a href="{{ url_for('dashboard') }}" class="text-blue-600 hover:underline">View Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
